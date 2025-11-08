@@ -1,0 +1,413 @@
+/*  Global reset  */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: #fff;
+  width: 380px;
+  padding: 22px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* TABS SECTION  */
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: #f1f1f1;
+  color: #999;
+  transition: 0.3s;
+}
+
+.tabs button.active {
+  background: #ffb300;
+  color: #000;
+}
+
+/* visibility of form  */
+.form {
+  display: none;
+  animation: fade 0.3s ease-in-out;
+}
+
+.form.active {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/*  Floating labels */
+.floating {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.floating input {
+  width: 100%;
+  padding: 12px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #eaf2ff;
+  outline: none;
+  transition: 0.2s;
+}
+
+.floating label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #777;
+  font-size: 14px;
+  background: #eaf2ff;
+  padding: 0 4px;
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.floating input:focus + label,
+.floating input:valid + label {
+  top: -7px;
+  font-size: 12px;
+  color: #000;
+}
+
+/* DIFFERENT BACKGROUND COLORS FOR LOGIN & SIGNUP EMAIL FIELDS */
+#loginEmail {
+  background: #eaf2ff; /* Light blue for login email */
+}
+
+#signupEmail {
+  background: #f6f8fc; /* Soft gray for signup email */
+}
+
+/* MATCH LABEL BACKGROUND TO EACH FIELD */
+#loginEmail + label {
+  background: #eaf2ff;
+}
+
+#signupEmail + label {
+  background: #f6f8fc;
+}
+
+/*  Login: Password / OTP*/
+.auth-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.switch-col {
+  display: inline-flex;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  min-width: auto;
+}
+
+.switch-col button {
+  border: none;
+  padding: 9px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #eee;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.switch-col button:first-child {
+  border-right: 1px solid #ccc;
+}
+
+#passwordBtn.active {
+  background: #ffb300;
+  color: #000;
+}
+
+#otpBtn {
+  background: #eee;
+  color: #999;
+}
+
+#otpBtn.active {
+  background: #ffb300;
+  color: #000;
+}
+
+.field-col {
+  flex: 1;
+  margin-left: 2px;
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  background: #eaf2ff;
+  width: 100%;
+  padding: 10px 35px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.eye {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.eye .material-symbols-outlined {
+  font-size: 16px;
+  color: #777;
+  opacity: 0.8;
+  filter: blur(0.3px);
+  transition: 0.2s ease;
+}
+
+.eye:hover .material-symbols-outlined {
+  color: #333;
+  opacity: 1;
+  filter: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.forgot {
+  display: block;
+  text-align: right;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #999;
+  text-decoration: underline;
+}
+
+/*Signup: OTP / Password */
+.signup-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.switch-signup {
+  display: inline-flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: auto;
+}
+
+.switch-signup button {
+  border: none;
+  padding: 9px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #eee;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.switch-signup button:first-child {
+  border-right: 1px solid #ccc;
+}
+
+#otpSignupBtn {
+  color: #999;
+}
+
+#pwdSignupBtn {
+  color: #999;
+}
+
+#otpSignupBtn.active,
+#pwdSignupBtn.active {
+  background: #ffb300;
+  color: #000;
+}
+
+.signup-field {
+  flex: 1;
+  margin-left: 2px;
+}
+
+/* OTP Input Field */
+#signupOtpField {
+  position: relative;
+  margin-bottom: 4px;
+}
+
+#signupOtpField input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f6f8fc;
+  outline: none;
+}
+
+/* Get OTP*/
+.get-otp {
+  display: block;
+  text-align: right;
+  font-size: 13px;
+  margin-top: 3px;
+  color: #888;
+  text-decoration: none;
+}
+
+/* Password */
+#signupPwdField.floating input {
+  background: #eaf2ff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/*Captcha*/
+.recaptcha-box {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0;
+}
+
+.recaptcha {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9f9f9;
+  width: 310px;
+  height: 55px;
+}
+
+.recaptcha img {
+  width: 28px;
+  height: 28px;
+}
+
+.recaptcha span {
+  font-size: 14px;
+  color: #000;
+}
+
+/*Buttons*/
+.btn.primary {
+  width: 100%;
+  background: #ffb300;
+  border: none;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 15px 0 25px 0;
+  transition: 0.2s;
+}
+
+.btn.primary:hover {
+  background: #ffcb33;
+}
+
+/* Socially Login Section*/
+.social-section {
+  display: flex;
+  justify-content: flex-end;
+  background: #f7f7f7;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.social-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icons img {
+  width: 26px;
+  cursor: pointer;
+}
+
+.social-inner p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+}
+
+/*Mailing SECTIONS */
+.mailing {
+  font-size: 13px;
+  display: block;
+  margin: 10px 0;
+  color: #333;
+}
+
+.terms {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 10px;
+  color: #333;
+}
+
+.terms a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Design */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+
+  .auth-row,
+  .signup-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .switch-col,
+  .switch-signup {
+    justify-content: flex-start;
+  }
+
+  .recaptcha-box {
+    justify-content: flex-start;
+  }
+}
